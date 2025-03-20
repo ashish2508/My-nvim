@@ -2,10 +2,10 @@ return {
   "tiagovla/tokyodark.nvim",
   config = function()
     require('tokyodark').setup({
-      transparent_background = false, -- Resolved conflict: set background to transparent
-      gamma = 1.00,                   -- adjust the brightness of the theme
+      transparent_background = true, -- Resolved conflict: set background to transparent
+      gamma = 1.00,                  -- adjust the brightness of the theme
       saturation = 1.00,
-      brightness = 2.00,
+      brightness = 1.00,
       styles = {
         comments = { italic = true },                                        -- style for comments
         keywords = { italic = false, bold = true },                          -- style for keywords

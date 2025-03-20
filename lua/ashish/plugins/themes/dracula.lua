@@ -32,8 +32,8 @@ return {
         black = "#191A21",
       },
       show_end_of_buffer = true,    -- default false
-      transparent_bg = false,       -- default false (change kept as transparent)
-      lualine_bg_color = "#44475a", -- default nil
+      transparent_bg = true,        -- default false (change kept as transparent)
+      lualine_bg_color = "#212121", -- default nil
       bold_comment = true,          -- default false
       overrides = {},
     })
