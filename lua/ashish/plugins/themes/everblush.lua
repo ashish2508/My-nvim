@@ -6,7 +6,7 @@ return {
     require('everblush').setup({
       transparent_background = false,
       nvim_tree = {
-        contrast = true, -- Resolved conflict: set contrast to true
+        contrast = false,
       },
     })
     --vim.cmd('colorscheme everblush')
