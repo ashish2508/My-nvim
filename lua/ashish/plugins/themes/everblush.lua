@@ -4,7 +4,7 @@ return {
   lazy = false,
   config = function()
     require('everblush').setup({
-      transparent_background = false,
+      transparent_background = true,
       nvim_tree = {
         contrast = false,
       },
