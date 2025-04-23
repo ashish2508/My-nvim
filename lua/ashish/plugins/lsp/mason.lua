@@ -45,9 +45,9 @@ return {
         "black",  -- python formatter
         "pylint",
         "eslint_d",
-        "djlint",   --go
         "ast-grep", --c++
         "harper-ls",
+        "gopls",
       },
     })
   end,
