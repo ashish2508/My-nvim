@@ -4,12 +4,12 @@ return {
   priority = 1000, -- Load it first to apply theme globally
   config = function()
     require("tokyonight").setup({
-      style = "night",        -- Options: storm, night, day, moon
-      transparent = true,     -- Enable background transparency
+      style = "moon",         -- Options: storm, night, day, moon
+      transparent = false,    -- Enable background transparency
       terminal_colors = true, -- Apply colors to terminal
       styles = {
-        comments = { italic = true },
-        keywords = { italic = true, bold = true },
+        comments = { italic = false },
+        keywords = { italic = false, bold = true },
         functions = { bold = true },
         variables = {},
         sidebars = "dark", -- Sidebar and floating windows style

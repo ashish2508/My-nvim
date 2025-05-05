@@ -1,8 +1,10 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
+
     "git",
     "clone",
+
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
@@ -11,9 +13,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  { import = "ashish.plugins" },
-  { import = "ashish.plugins.lsp" },
-  { import = "ashish.plugins.themes" },
-  change_detection = { notify = false },
-})
+require("lazy").setup(
+-- First argument: plugins
+
+  {
+    { import = "ashish.plugins" },
+
+    { import = "ashish.plugins.lsp" },
+    { import = "ashish.plugins.themes" },
+  },
+  -- Second argument: configuration
+  {
+    checker = {
+      enabled = true,
+      notify = false,
+    },
+    change_detection = { notify = false },
+  }
+
+)
