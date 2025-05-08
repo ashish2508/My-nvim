@@ -5,17 +5,24 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd.colorscheme("vercel-dark")
+      vim.cmd.colorscheme("vercel-dark")
 
       require('vercel').setup({
-        transparent = false,
+        transparent = true,
         italics = {
           comments = false,
           keywords = false,
           functions = false,
           strings = false,
-
           variables = false,
+        },
+        bold = {
+          comments = false,
+          keywords = true,
+          functions = true,
+          strings = false,
+          variables = true,
+
         },
         overrides = {},
       })

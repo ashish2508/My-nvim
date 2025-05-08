@@ -17,6 +17,6 @@ return {
       custom_palette = {} or function(palette) return {} end,                -- extend palette
       terminal_colors = true,
     })
-    vim.cmd [[colorscheme tokyodark]] -- Uncomment this line if you want to set the colorscheme
+    -- vim.cmd [[colorscheme tokyodark]] -- Uncomment this line if you want to set the colorscheme
   end,
 }
