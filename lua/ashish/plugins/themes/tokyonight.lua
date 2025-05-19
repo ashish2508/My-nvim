@@ -6,7 +6,7 @@ return {
     require("tokyonight").setup({
       style = "moon",         -- Options: storm, night, day, moon
       transparent = false,    -- Enable background transparency
-      terminal_colors = true, -- Apply colors to terminal
+      terminal_colors = false, -- Apply colors to terminal
       styles = {
         comments = { italic = false },
         keywords = { italic = false, bold = true },

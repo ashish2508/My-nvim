@@ -28,7 +28,7 @@ require("solarized-osaka").setup({
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors) end,
 })
-    vim.cmd[[colorscheme solarized-osaka]]
+    --vim.cmd[[colorscheme solarized-osaka]]
   end
 
 }
