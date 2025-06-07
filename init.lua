@@ -4,3 +4,4 @@ end
 
 vim.print = _G.dd
 require("ashish")
+require("floaterminal")
