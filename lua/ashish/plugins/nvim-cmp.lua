@@ -14,16 +14,17 @@ return {
     "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim",         -- vs-code like pictograms
+    { 
+      "samiulsami/cmp-go-deep", 
+      dependencies = { "kkharji/sqlite.lua" } 
+    },
   },
   config = function()
     local cmp = require("cmp")
-
     local luasnip = require("luasnip")
-
     local lspkind = require("lspkind")
-
     require("luasnip.loaders.from_vscode").lazy_load()
-
+    
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect",
@@ -48,8 +49,21 @@ return {
         { name = "luasnip" }, -- snippets
         { name = "buffer" },  -- text within current buffer
         { name = "path" },    -- file system paths
+        {
+          name = "go_deep",
+          keyword_length = 3,
+          max_item_count = 5,
+          ---@module "cmp_go_deep"
+          ---@type cmp_go_deep.Options
+          option = {
+            -- Add your cmp-go-deep configuration options here
+            -- For example:
+            -- db_path = "~/.cache/nvim/cmp_go_deep.db",
+            -- max_results = 10,
+            -- min_keyword_length = 2,
+          },
+        },
       }),
-
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {
         format = lspkind.cmp_format({
