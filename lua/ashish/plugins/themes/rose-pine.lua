@@ -84,7 +84,7 @@ priority=1000,
 		})
 
 		-- Simply set the colorscheme after setup
-		vim.cmd("colorscheme rose-pine")
+		--vim.cmd("colorscheme rose-pine")
 	end,
 }
 
