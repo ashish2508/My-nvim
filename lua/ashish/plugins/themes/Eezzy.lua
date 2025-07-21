@@ -21,6 +21,6 @@ return {
       print("Failed to load eezzy module or setup function")
     end
     
-    vim.cmd.colorscheme("Eezzy-dark")
+    --vim.cmd.colorscheme("Eezzy-dark")
   end
 }
