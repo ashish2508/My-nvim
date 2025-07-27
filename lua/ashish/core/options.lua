@@ -1,4 +1,5 @@
 vim.cmd("let g:netrw_liststyle=3")
+vim.opt.winborder = "rounded"
 
 local opt = vim.opt
 opt.incsearch = true
@@ -16,13 +17,13 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.smartindent = true
 opt.cursorline = true
+vim.opt.cursorcolumn = false
 opt.backup = false
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.backspace = "indent,eol,start"
-
 opt.clipboard:append("unnamedplus")
 vim.opt.clipboard = "unnamedplus"
 opt.splitright = true
@@ -30,7 +31,8 @@ opt.splitbelow = true
 opt.swapfile = false
 
 vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
