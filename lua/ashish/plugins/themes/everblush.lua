@@ -9,6 +9,6 @@ return {
         contrast = false,
       },
     })
- --vim.cmd('colorscheme everblush')
+    --vim.cmd('colorscheme everblush')
   end
 }
