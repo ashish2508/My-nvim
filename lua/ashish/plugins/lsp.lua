@@ -4,14 +4,11 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     { "mason-org/mason.nvim", version = "^1.0.0" },
     { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
-    { "jay-babu/mason-null-ls.nvim" },
-    { "nvimtools/none-ls.nvim" },
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "jcha0713/cmp-tw2css",
     "hrsh7th/nvim-cmp",
-    "b0o/schemastore.nvim", -- Added for JSON schema support
   },
 
   config = function()
@@ -35,105 +32,7 @@ return {
         "ts_ls",
         "gopls",
         "dockerls",
-        "clangd", -- For C/C++
-        "jdtls", -- For Java
-        "prismals", -- For Prisma
-        "jsonls", -- For JSON (dedicated server)
-        "tailwindcss", -- For Tailwind CSS
-        "elixirls", -- For Elixir
-        "csharp_ls", -- For C#
       },
-    })
-
-    -- Setup mason-null-ls for formatters
-    require("mason-null-ls").setup({
-      ensure_installed = {
-        -- C/C++
-        "clang_format",
-        -- Java
-        "google_java_format",
-        -- JavaScript/TypeScript/JSX/TSX
-        "prettier",
-        "eslint_d",
-        -- JSON
-        "jq",
-        -- Lua
-        "stylua",
-        -- Docker
-        "dockerfilelint",
-        -- Rust
-        "rustfmt",
-        -- Go
-        "gofmt",
-        "goimports",
-        -- Elixir
-        "mix",
-        -- HTML
-        "htmlbeautifier",
-        -- C#
-        "csharpier",
-      },
-      automatic_installation = false,
-      handlers = {},
-    })
-
-    -- Setup null-ls (none-ls) for formatters
-    local null_ls = require("null-ls")
-    null_ls.setup({
-      sources = {
-        -- C/C++
-        null_ls.builtins.formatting.clang_format.with({
-          filetypes = { "c", "cpp", "objc", "objcpp" },
-          extra_args = { "--style=Google" }, -- You can customize this
-        }),
-
-        -- Java
-        null_ls.builtins.formatting.google_java_format,
-
-        -- JavaScript/TypeScript/JSX/TSX/JSON
-        null_ls.builtins.formatting.prettier.with({
-          filetypes = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "vue",
-            "css",
-            "scss",
-            "less",
-            "html",
-            "json",
-            "jsonc",
-            "yaml",
-            "markdown",
-          },
-        }),
-        null_ls.builtins.diagnostics.eslint_d.with({
-          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-        }),
-
-        -- Lua
-        null_ls.builtins.formatting.stylua,
-
-        -- Rust (handled by rust-analyzer LSP, but adding as backup)
-        null_ls.builtins.formatting.rustfmt,
-
-        -- Go
-        null_ls.builtins.formatting.gofmt,
-        null_ls.builtins.formatting.goimports,
-
-        -- Elixir
-        null_ls.builtins.formatting.mix,
-
-        -- HTML
-        null_ls.builtins.formatting.htmlbeautifier,
-
-        -- C#
-        null_ls.builtins.formatting.csharpier,
-      },
-    })
-
-    require("mason-lspconfig").setup({
       handlers = {
         function(server_name)
           require("lspconfig")[server_name].setup({
@@ -265,91 +164,8 @@ return {
             },
           })
         end,
-        ["clangd"] = function()
-          require("lspconfig")["clangd"].setup({
-            capabilities = capabilities,
-            cmd = { "clangd", "--background-index" },
-            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-          })
-        end,
-        ["jdtls"] = function()
-          require("lspconfig")["jdtls"].setup({
-            capabilities = capabilities,
-            filetypes = { "java" },
-          })
-        end,
-        ["prismals"] = function()
-          require("lspconfig")["prismals"].setup({
-            capabilities = capabilities,
-            filetypes = { "prisma" },
-          })
-        end,
-        ["jsonls"] = function()
-          require("lspconfig")["jsonls"].setup({
-            capabilities = capabilities,
-            filetypes = { "json", "jsonc" },
-            settings = {
-              json = {
-                schemas = require("schemastore").json.schemas(),
-                validate = { enable = true },
-              },
-            },
-          })
-        end,
-        ["tailwindcss"] = function()
-          require("lspconfig")["tailwindcss"].setup({
-            capabilities = capabilities,
-            filetypes = {
-              "css",
-              "scss",
-              "sass",
-              "html",
-              "javascript",
-              "javascriptreact",
-              "typescript",
-              "typescriptreact",
-              "svelte",
-              "vue",
-            },
-            init_options = {
-              userLanguages = {
-                eelixir = "html-eex",
-                eruby = "erb",
-              },
-            },
-            settings = {
-              tailwindCSS = {
-                experimental = {
-                  classRegex = {
-                    { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-                    { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-                  },
-                },
-              },
-            },
-          })
-        end,
-        ["elixirls"] = function()
-          require("lspconfig")["elixirls"].setup({
-            capabilities = capabilities,
-            filetypes = { "elixir", "eex", "heex", "surface" },
-            settings = {
-              elixirLS = {
-                dialyzerEnabled = false,
-                fetchDeps = false,
-              },
-            },
-          })
-        end,
-        ["csharp_ls"] = function()
-          require("lspconfig")["csharp_ls"].setup({
-            capabilities = capabilities,
-            filetypes = { "cs" },
-          })
-        end,
       },
     })
-
     local l = vim.lsp
     l.handlers["textDocument/hover"] = function(_, result, ctx, config)
       config = config or { border = "rounded", focusable = true }
@@ -433,39 +249,6 @@ return {
       end,
     })
 
-    -- Additional autocmds for new filetypes
-    autocmd({ "BufEnter", "BufWinEnter" }, {
-      pattern = { "*.prisma" },
-      callback = function(e)
-        vim.cmd("set filetype=prisma")
-      end,
-    })
-
-    -- C# filetype
-    autocmd({ "BufEnter", "BufWinEnter" }, {
-      pattern = { "*.cs" },
-      callback = function(e)
-        vim.cmd("set filetype=cs")
-      end,
-    })
-
-    -- Elixir filetypes
-    autocmd({ "BufEnter", "BufWinEnter" }, {
-      pattern = { "*.ex", "*.exs", "*.eex", "*.heex", "*.surface" },
-      callback = function(e)
-        local ext = vim.fn.expand("%:e")
-        if ext == "ex" or ext == "exs" then
-          vim.cmd("set filetype=elixir")
-        elseif ext == "eex" then
-          vim.cmd("set filetype=eex")
-        elseif ext == "heex" then
-          vim.cmd("set filetype=heex")
-        elseif ext == "surface" then
-          vim.cmd("set filetype=surface")
-        end
-      end,
-    })
-
     autocmd("LspAttach", {
       callback = function(e)
         local opts = { buffer = e.buf }
@@ -491,35 +274,6 @@ return {
         vim.keymap.set("n", "<leader>lp", function()
           vim.diagnostic.goto_prev()
         end, opts)
-
-        -- Enhanced format on save for multiple languages
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = e.buf,
-          callback = function()
-            local filetype = vim.bo.filetype
-            local format_filetypes = {
-              "c",
-              "cpp",
-              "java",
-              "javascript",
-              "javascriptreact",
-              "typescript",
-              "typescriptreact",
-              "json",
-              "jsonc",
-              "lua",
-              "rust",
-              "go",
-              "elixir",
-              "html",
-              "cs",
-            }
-
-            if vim.tbl_contains(format_filetypes, filetype) then
-              vim.lsp.buf.format({ async = false })
-            end
-          end,
-        })
       end,
     })
   end,
