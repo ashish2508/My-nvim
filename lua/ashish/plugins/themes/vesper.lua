@@ -1,20 +1,20 @@
 return {
-  'datsfilipe/vesper.nvim',
+  "datsfilipe/vesper.nvim",
   priority = 1000,
   lazy = false,
   config = function()
-    require('vesper').setup({
+    require("vesper").setup({
       transparent = false, -- Boolean: Sets the background to transparent
       italics = {
-        comments = false,  -- Boolean: Italicizes comments
-        keywords = false,  -- Boolean: Italicizes keywords
-        functions = true,  -- Boolean: Italicizes functions
-        strings = false,   -- Boolean: Italicizes strings
+        comments = false, -- Boolean: Italicizes comments
+        keywords = false, -- Boolean: Italicizes keywords
+        functions = true, -- Boolean: Italicizes functions
+        strings = false, -- Boolean: Italicizes strings
         variables = false, -- Boolean: Italicizes variables
       },
-      overrides = {},      -- A dictionary of group names, can be a function returning a dictionary or a table.
-      palette_overrides = {}
+      overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+      palette_overrides = {},
     })
-    --vim.cmd.colorscheme('vesper') -- Uncommented to apply the colorscheme
-  end
+    --vim.cmd.colorscheme("vesper") -- Uncommented to apply the colorscheme
+  end,
 }

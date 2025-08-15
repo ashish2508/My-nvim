@@ -1,9 +1,9 @@
 return {
-  'ashish2508/Eezzy.nvim', -- GitHub repository path
+  "ashish2508/Eezzy.nvim", -- GitHub repository path
   lazy = false,
   priority = 1000,
   config = function()
-    local ok, eezzy = pcall(require, 'Eezzy')
+    local ok, eezzy = pcall(require, "Eezzy")
 
     if ok and eezzy and type(eezzy.setup) == "function" then
       eezzy.setup({
@@ -21,6 +21,6 @@ return {
       print("Failed to load eezzy module or setup function")
     end
 
-    vim.cmd.colorscheme("Eezzy-dark")
-  end
+    --vim.cmd.colorscheme("Eezzy-dark")
+  end,
 }
