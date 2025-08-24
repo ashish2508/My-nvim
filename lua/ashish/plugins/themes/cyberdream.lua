@@ -19,6 +19,6 @@ return {
       terminal_colors = false,
     })
     vim.api.nvim_set_keymap("n", "<leader>ccd", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
-    vim.cmd("colorscheme cyberdream")
+    --vim.cmd("colorscheme cyberdream")
   end,
 }
