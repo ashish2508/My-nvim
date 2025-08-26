@@ -32,7 +32,7 @@ opt.swapfile = false
 
 vim.o.foldcolumn = "1" -- '0' is not bad
 vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 200 })
+    vim.hl.on_yank({ higroup = "YankHighlight", timeout = 200 })
   end,
 })
 
