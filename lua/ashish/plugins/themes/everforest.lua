@@ -4,7 +4,7 @@ return {
   priority = 1000,
   opts = {
     background = "hard", -- "soft", "medium", "hard"
-    transparent_background_level = 100, -- 0 to 100
+    transparent_background_level = 0, -- 0 to 1
     dim_inactive_windows = true,
     styles = {
       comments = "italic",
