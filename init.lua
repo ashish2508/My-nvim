@@ -23,3 +23,4 @@ vim.opt.clipboard = "unnamedplus"
 
 require("ashish")
 require("floaterminal")
+require("man")

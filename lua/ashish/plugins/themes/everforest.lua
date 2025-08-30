@@ -5,7 +5,7 @@ return {
   opts = {
     background = "hard", -- "soft", "medium", "hard"
     transparent_background_level = 0, -- 0 to 1
-    dim_inactive_windows = true,
+    dim_inactive_windows = false,
     styles = {
       comments = "italic",
       keywords = "bold",
