@@ -35,26 +35,26 @@ return {
       },
       handlers = {
         function(server_name)
-          require("lspconfig")[server_name].setup({
+          vim.lsp.config(server_name, {
             capabilities = capabilities,
           })
         end,
         ["svelte"] = function()
-          require("lspconfig")["svelte"].setup({
+          vim.lsp.config("svelte", {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
               vim.api.nvim_create_autocmd("BufWritePost", {
                 pattern = { "*.js", "*.ts" },
                 callback = function(ctx)
                   -- this bad boy updates imports between svelte and ts/js files
-                  client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+                  client.notify("$/onDidChangeTsOrJsFile", { uri = vim.uri_from_bufnr(ctx.buf) })
                 end,
               })
             end,
           })
         end,
         ["tinymist"] = function()
-          require("lspconfig")["tinymist"].setup({
+          vim.lsp.config("tinymist", {
             capabilities = capabilities,
             settings = {
               formatterMode = "typstyle",
@@ -63,8 +63,7 @@ return {
           })
         end,
         ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup({
+          vim.lsp.config("lua_ls", {
             capabilities = capabilities,
             settings = {
               Lua = {
@@ -77,7 +76,7 @@ return {
           })
         end,
         ["html"] = function()
-          require("lspconfig")["html"].setup({
+          vim.lsp.config("html", {
             capabilities = capabilities,
             filetypes = { "html", "htm" },
             settings = {
@@ -96,7 +95,7 @@ return {
           })
         end,
         ["ts_ls"] = function()
-          require("lspconfig")["ts_ls"].setup({
+          vim.lsp.config("ts_ls", {
             capabilities = capabilities,
             filetypes = {
               "javascript",
@@ -133,7 +132,7 @@ return {
           })
         end,
         ["gopls"] = function()
-          require("lspconfig")["gopls"].setup({
+          vim.lsp.config("gopls", {
             capabilities = capabilities,
             settings = {
               gopls = {
@@ -151,7 +150,7 @@ return {
           })
         end,
         ["dockerls"] = function()
-          require("lspconfig")["dockerls"].setup({
+          vim.lsp.config("dockerls", {
             capabilities = capabilities,
             settings = {
               docker = {
