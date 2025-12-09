@@ -1,9 +1,9 @@
 return {
-  'loctvl842/monokai-pro.nvim',
+  "loctvl842/monokai-pro.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require('monokai-pro').setup({
+    require("monokai-pro").setup({
       transparent_background = false,
       terminal_colors = false,
       devicons = true,
@@ -17,19 +17,19 @@ return {
         annotation = { italic = true },
         tag_attribute = { italic = true },
       },
-      filter = 'octagon', -- octagon | pro | machine
+      filter = "machine", -- octagon | pro | machine
       day_night = {
         enable = false,
-        day_filter = 'pro',
-        night_filter = 'spectrum',
+        day_filter = "pro",
+        night_filter = "spectrum",
       },
-      inc_search = 'background',
+      inc_search = "background",
       background_clear = {
-        'toggleterm',
-        'telescope',
-        'renamer',
-        'notify',
-        'nvim-tree',
+        "toggleterm",
+        "telescope",
+        "renamer",
+        "notify",
+        "nvim-tree",
       },
       plugins = {
         bufferline = {
@@ -37,14 +37,12 @@ return {
           underline_visible = false,
         },
         indent_blankline = {
-          context_highlight = 'pro',
+          context_highlight = "pro",
           context_start_underline = false,
         },
       },
       override = function(c) end,
     })
-    --vim.cmd('colorscheme monokai-pro')
-
+    vim.cmd("colorscheme monokai-pro")
   end,
 }
-

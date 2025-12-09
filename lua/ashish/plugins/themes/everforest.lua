@@ -16,6 +16,6 @@ return {
   },
   config = function(_, opts)
     require("everforest").setup(opts)
-    vim.cmd("colorscheme everforest")
+    --vim.cmd("colorscheme everforest")
   end,
 }
